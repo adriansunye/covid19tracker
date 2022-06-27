@@ -1,0 +1,86 @@
+/* 
+========================================== 
+Navbar Tracker 
+========================================== 
+*/
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #eee;
+}
+
+nav {
+  position: fixed;
+  height: 100vh;
+  width: 4rem;
+  overflow: hidden;
+  transition: width 0.3s ease;
+}
+nav:hover, nav.pinned {
+  width: 10rem;
+}
+nav #logo {
+  height: 6rem;
+  line-height: 6rem;
+  padding-left: 0.5rem;
+}
+
+nav a {
+  text-decoration: none!important;
+  vertical-align: middle;
+  display: table;
+  width: 10rem;
+}
+nav a.active .fa {
+  border-left: 3px solid #f60;
+  
+}
+nav a:hover {
+  background: darkblue;
+  color: #bee0ff;
+}
+nav a .fa {
+  width: 4rem;
+  display: table-cell;
+  font-size: 2rem;
+  padding: 1rem 0;
+  text-align: center;
+}
+nav a.label {
+  height: 50px;   
+  display: table-cell;
+  vertical-align: middle;
+}
+
+nav a:last-child {
+  margin-top: 50px;
+}
+
+main {
+  padding: 2rem 5rem 2rem 9rem;
+  min-height: 100vh;
+}
+
+/* 
+========================================== 
+Animation logo img
+========================================== 
+*/
+.image {
+    height: 50%;
+    -webkit-animation:spin 7s linear infinite;
+    -moz-animation:spin 7s linear infinite;
+    animation:spin 7s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
