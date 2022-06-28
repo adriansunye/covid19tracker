@@ -1,3 +1,12 @@
+@font-face {
+  font-family: lanear;
+  src: url(../media/fonts/lanenar_Lane.ttf);
+}
+@font-face {
+  font-family: themify;
+  src: url(../media/fonts/themify.ttf);
+}
+
 /* 
 ========================================== 
 Navbar Tracker 
@@ -13,6 +22,7 @@ Navbar Tracker
 }
 
 body {
+  font-family:  lanear;    
   margin: 0;
   padding: 0;
   background: #eee;
@@ -96,15 +106,26 @@ Cards
 .item {
   max-width: 100%;      
   position: relative;
-  transition: 250ms all;
-  text-align: center;    
+  transition: 250ms all;    
   padding: 20px 5px 10px 5px;
   background-color: #fff;
   border-radius: 0.25rem; 
   background-repeat: no-repeat;
   background-size: 150px 150px;
   background-position: right -40px top -10px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;    
+}
+
+.item::before{
+    content: "";
+    background-size: cover;
+    position: absolute;
+    top: -40%;
+    right: 0px;
+    bottom: 15%;
+    left: 50%;
+    opacity: 0.25;
 }
 
 .parent {
@@ -133,15 +154,27 @@ Cards
             margin-left: 35%;
             padding-bottom:2px;}
 }
-.div3 { grid-area: 2 / 3 / 4 / 3; 
-        background-image: url(../media/icons/covid-defult.svg);}
+
+
+.div3 { grid-area: 2 / 3 / 4 / 3; }
+.div3::before {
+   background-image: url('../media/icons/covid-defult.svg'); 
+}
+.div3 .data{
+    color: blue;   
+} 
 @media (max-width: 768px) { 
     .div3 { grid-area: 11 / 1 / 12 / 12;
             margin-left: 25%;
             margin-right: 10%;}
 }
-.div4 { grid-area: 2 / 4 / 4 / 4; 
-        background-image: url(../media/icons/covid-red.svg);}
+.div4 { grid-area: 2 / 4 / 4 / 4; }
+.div4::before {
+   background-image: url('../media/icons/covid-red.svg'); 
+}
+.div4 .data{
+    color: red;   
+}
 @media (max-width: 768px) { 
     .div4 { grid-area: 12 / 1 / 13 / 12;
             margin-left: 25%;
@@ -153,29 +186,49 @@ Cards
             margin-left: 25%;
             margin-right: 10%;}
 }
-.div6 { grid-area: 4 / 3 / 6 / 3; 
-        background-image: url(../media/icons/covid-green.svg);}
+.div6 { grid-area: 4 / 3 / 6 / 3; }
+.div6::before {
+   background-image: url('../media/icons/covid-green.svg'); 
+}
+.div6 .data{
+    color: green;   
+}
 @media (max-width: 768px) { 
     .div6 { grid-area: 14 / 1 / 15 / 12;
             margin-left: 25%;
             margin-right: 10%;}
 }
-.div7 { grid-area: 4 / 4 / 6 / 4; 
-        background-image: url(../media/icons/covid-blue.svg);}
+.div7 { grid-area: 4 / 4 / 6 / 4; }
+.div7::before {
+   background-image: url('../media/icons/covid-blue.svg'); 
+}
+.div7 .data{
+    color: skyblue;   
+}
 @media (max-width: 768px) { 
     .div7 { grid-area: 15 / 1 / 16 / 12;
             margin-left: 25%;
             margin-right: 10%;}
 }
-.div8 { grid-area: 6 / 3 / 8 / 3; 
-        background-image: url(../media/icons/covid-orange.svg);}
+.div8 { grid-area: 6 / 3 / 8 / 3; }
+.div8::before {
+   background-image: url('../media/icons/covid-orange.svg'); 
+}
+.div8 .data{
+    color: orange;   
+}
 @media (max-width: 768px) { 
     .div8 { grid-area: 16 / 1 / 17 / 12;
             margin-left: 25%;
             margin-right: 10%;}
 }
-.div9 { grid-area: 6 / 4 / 8 / 4; 
-        background-image: url(../media/icons/covid-redark.svg);}
+.div9 { grid-area: 6 / 4 / 8 / 4; }
+.div9::before {
+   background-image: url(../media/icons/covid-redark.svg); 
+}
+.div9 .data{
+    color: darkred;   
+}
 @media (max-width: 768px) { 
     .div9 { grid-area: 17 / 1 / 18 / 12;
             margin-left: 25%;
@@ -192,7 +245,9 @@ Cards
     transform: translateY(-10px);
 }
 
+
 .outside {
+  font-weight: bolder!important;      
   overflow: hidden;    
   background-color: white;
   border-radius: 0.25rem;
@@ -203,3 +258,14 @@ select{
     min-width: 200px;
 }
 
+.title {
+    border-bottom: 1px solid grey; 
+}
+
+.data p, .title h3{
+   font-weight: bolder;
+}
+
+.data {
+    font-size: 3rem;
+}

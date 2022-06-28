@@ -57,12 +57,12 @@ function populateCard(){
             el.remove();
         });
     }
-    document.querySelector(".div3").appendChild(document.createElement("p")).innerHTML = covidObj[countriesList.selectedIndex].cases;
-    document.querySelector(".div4").appendChild(document.createElement("p")).innerHTML = covidObj[countriesList.selectedIndex].deaths;
-    document.querySelector(".div6").appendChild(document.createElement("p")).innerHTML = covidObj[countriesList.selectedIndex].recovered;
-    document.querySelector(".div7").appendChild(document.createElement("p")).innerHTML = covidObj[countriesList.selectedIndex].active;
-    document.querySelector(".div8").appendChild(document.createElement("p")).innerHTML = covidObj[countriesList.selectedIndex].todayCases;
-    document.querySelector(".div9").appendChild(document.createElement("p")).innerHTML = covidObj[countriesList.selectedIndex].todayDeaths;
+    document.querySelector(".div3 .data").appendChild(document.createElement("p")).innerHTML = covidObj[countriesList.selectedIndex].cases;
+    document.querySelector(".div4 .data").appendChild(document.createElement("p")).innerHTML = covidObj[countriesList.selectedIndex].deaths;
+    document.querySelector(".div6 .data").appendChild(document.createElement("p")).innerHTML = covidObj[countriesList.selectedIndex].recovered;
+    document.querySelector(".div7 .data").appendChild(document.createElement("p")).innerHTML = covidObj[countriesList.selectedIndex].active;
+    document.querySelector(".div8 .data").appendChild(document.createElement("p")).innerHTML = covidObj[countriesList.selectedIndex].todayCases;
+    document.querySelector(".div9 .data").appendChild(document.createElement("p")).innerHTML = covidObj[countriesList.selectedIndex].todayDeaths;
 }
 
 function updated(){
@@ -103,8 +103,3 @@ colorAxis: {colors: ['#eee8f3', '#ddd1e7','#ccbadc','#bba3d0','#aa8cc5','#9975b9
 var chart = new google.visualization.GeoChart(document.getElementById('chartDiv'));
 chart.draw(data, options);
 }
-
-
-
-
-
