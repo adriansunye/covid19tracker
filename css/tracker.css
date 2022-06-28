@@ -158,13 +158,14 @@ Principal grid and elements
 .parent {
   display: grid;
   grid-template-columns: repeat(6, 1fr);;
-  grid-template-rows: 1fr auto auto auto 1.5fr;
+  grid-template-rows: 1fr auto auto auto 0.75fr;
   grid-column-gap: 20px;
-  grid-row-gap: 20px;     
+  grid-row-gap: 20px;
+  overflow: auto;
 }@media (max-width: 768px) {
   .parent {
     grid-template-columns: auto;
-    grid-template-rows: repeat(19, 1fr); }
+    grid-template-rows: repeat(18, 1fr); }
 }
 
 .parent div.item:hover {
@@ -204,13 +205,24 @@ Principal grid and elements
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);    
 }
 
+.item .title {
+    border-bottom: 1px solid grey; 
+}
+
+.item .data {
+    font-size: 3rem;
+}
+
+.data, .title h3, .title h6{
+   font-weight: bolder;
+}
 /* 
 ============================================ 
 Setting grid areas and responsivnes of grid 
 ============================================ 
 */
 
-.div1 { grid-area: 1 / 1 / 6 / 3;  }
+.div1 { grid-area: 1 / 1 / 9 / 3; }
 @media (max-width: 768px) {
     .div1 { grid-area: 1 / 1 / 6 / 14; }
 }
@@ -331,17 +343,29 @@ select{
 Last grid element 
 ========================================== 
 */
-.data {
-    font-size: 3rem;
+
+.globalData img{
+    height: 50%;
+    top: 25%;
+    left: 90%;
+    position: absolute;
+}@media (max-width: 768px) { 
+    .globalData img{
+       left: 70%; 
+    }
 }
 
-.title {
-    border-bottom: 1px solid grey; 
+.globalData .title{
+    height: 50%;
+    top: 10%;
+    left: 15%;
 }
 
-.data, .title h3{
-   font-weight: bolder;
+.globalData .data {
+    font-size: 1.5rem;
+    font-weight: bolder;
 }
+
 .globalData{
   display:grid;
   grid-template-columns: repeat(5, 1fr);

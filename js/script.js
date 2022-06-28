@@ -19,7 +19,7 @@ let vaccinesObj = {};
 Select event and load data on refresh
 ========================================== 
 */
-
+drawTracker(firstTracker);
 const countriesList = document.getElementById("countriesList");
 document.addEventListener( "DOMContentLoaded", getData);
 countriesList.addEventListener('change', populateCard);
@@ -39,8 +39,15 @@ async function getData(){
             covidObj[i] = await covidData.json();
     } 
     
+    const covidWorld = await fetch (WORLD, {
+                headers: {
+                'Accept': 'application/json',
+                }
+            });
+            worldObj = await covidWorld.json();
     /* first object created generate html to reduce load time*/
     populateCard();
+    populateGlobal();
     callGoogle();
     document.querySelector("main").removeAttribute("class", "noShow");
     document.querySelector("main").setAttribute("class", "show");
@@ -59,13 +66,6 @@ async function getData(){
                 }
             });
             historyObj = await covidHistory.json();
-    
-    const covidWorld = await fetch (WORLD, {
-                headers: {
-                'Accept': 'application/json',
-                }
-            });
-            worldObj = await covidWorld.json();
 }
 
 /* 
@@ -80,6 +80,18 @@ function populateCard(){
     document.querySelector(".div7 .data").innerHTML = covidObj[countriesList.selectedIndex].active;
     document.querySelector(".div8 .data").innerHTML = covidObj[countriesList.selectedIndex].todayCases;
     document.querySelector(".div9 .data").innerHTML = covidObj[countriesList.selectedIndex].todayDeaths;
+}
+
+/* 
+========================================== 
+Get world data and add to html div10
+========================================== 
+*/
+function populateGlobal(){
+    document.querySelector(".globalItem1 .data").innerHTML = worldObj.cases;
+    document.querySelector(".globalItem2 .data").innerHTML = worldObj.recovered;
+    document.querySelector(".globalItem3 .data").innerHTML = worldObj.deaths;
+    document.querySelector(".globalItem4 .data").innerHTML = worldObj.todayDeaths;
 }
 
 /* 
@@ -122,4 +134,9 @@ function drawRegionsMap() {
     /* draw on asigned div map*/
     var chart = new google.visualization.GeoChart(document.getElementById('chartDiv'));
     chart.draw(data, options);
+    google.visualization.events.addListener(geochart, 'select', selectHandler);
+}
+
+function drawTracker(code){
+   document.getElementById("main").innerHTML = code;
 }
