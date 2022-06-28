@@ -104,6 +104,7 @@ Cards
   background-repeat: no-repeat;
   background-size: 150px 150px;
   background-position: right -40px top -10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1); 
 }
 
 .parent {
@@ -187,16 +188,8 @@ Cards
             margin-right: 10%;}
 }
 
-
 .parent div.item:hover {
     transform: translateY(-10px);
-}
-
-.input-group label{
-    display: inline-block;
-        width: 150px;
-        text-align: right;
-    vertical-align: middle;
 }
 
 .outside {
@@ -207,7 +200,6 @@ Cards
 }
 
 select{
-    max-width: 300px;
     min-width: 200px;
 }
 
