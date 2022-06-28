@@ -1,3 +1,9 @@
+/* 
+========================================== 
+API links and empty objects to store data
+========================================== 
+*/
+
 const HISTORICAl = "https://disease.sh/v3/covid-19/historical/all?lastdays=all";
 const WORLD = "https://disease.sh/v3/covid-19/all";
 const COUNTRIES = "https://disease.sh/v3/covid-19/countries/";
@@ -8,11 +14,21 @@ let historyObj = {};
 let worldObj = {};
 let vaccinesObj = {};
 
+/* 
+========================================== 
+Select event and load data on refresh
+========================================== 
+*/
+
 const countriesList = document.getElementById("countriesList");
 document.addEventListener( "DOMContentLoaded", getData);
 countriesList.addEventListener('change', populateCard);
 
-
+/* 
+================================================ 
+Data function called once and store in objects
+================================================ 
+*/
 async function getData(){
     for(let i = 0; i < countriesList.length; i++){
            const covidData = await fetch (COUNTRIES + countriesList.options[i].value, {
@@ -21,8 +37,15 @@ async function getData(){
                 }
             });
             covidObj[i] = await covidData.json();
-    }
+    } 
     
+    /* first object created generate html to reduce load time*/
+    populateCard();
+    callGoogle();
+    document.querySelector("main").removeAttribute("class", "noShow");
+    document.querySelector("main").setAttribute("class", "show");
+    
+    /* continue creating objects from api*/
     const covidVaccines = await fetch (VACCINES, {
                 headers: {
                 'Accept': 'application/json',
@@ -43,33 +66,27 @@ async function getData(){
                 }
             });
             worldObj = await covidWorld.json();
-            
-    
-    populateCard();
-    /*updated();*/
-    callGoogle();   
 }
 
+/* 
+========================================== 
+Get data from objects and add to html 
+========================================== 
+*/
 function populateCard(){
-    if(document.querySelector(".div3 p")){
-        let p = document.querySelectorAll(".parent p");
-            p.forEach(el => {
-            el.remove();
-        });
-    }
-    document.querySelector(".div3 .data").appendChild(document.createElement("p")).innerHTML = covidObj[countriesList.selectedIndex].cases;
-    document.querySelector(".div4 .data").appendChild(document.createElement("p")).innerHTML = covidObj[countriesList.selectedIndex].deaths;
-    document.querySelector(".div6 .data").appendChild(document.createElement("p")).innerHTML = covidObj[countriesList.selectedIndex].recovered;
-    document.querySelector(".div7 .data").appendChild(document.createElement("p")).innerHTML = covidObj[countriesList.selectedIndex].active;
-    document.querySelector(".div8 .data").appendChild(document.createElement("p")).innerHTML = covidObj[countriesList.selectedIndex].todayCases;
-    document.querySelector(".div9 .data").appendChild(document.createElement("p")).innerHTML = covidObj[countriesList.selectedIndex].todayDeaths;
+    document.querySelector(".div3 .data").innerHTML = covidObj[countriesList.selectedIndex].cases;
+    document.querySelector(".div4 .data").innerHTML = covidObj[countriesList.selectedIndex].deaths;
+    document.querySelector(".div6 .data").innerHTML = covidObj[countriesList.selectedIndex].recovered;
+    document.querySelector(".div7 .data").innerHTML = covidObj[countriesList.selectedIndex].active;
+    document.querySelector(".div8 .data").innerHTML = covidObj[countriesList.selectedIndex].todayCases;
+    document.querySelector(".div9 .data").innerHTML = covidObj[countriesList.selectedIndex].todayDeaths;
 }
 
-function updated(){
-    var d = new Date(worldObj.updated); // The 0 there is the key, which sets the date to the epoch
-    document.querySelector(".input-group label").innerHTML = "1";
-}
-
+/* 
+========================================== 
+Use google charts to generate map
+========================================== 
+*/
 function callGoogle(){
     google.charts.load('current', {'packages':['geochart', 'corechart']});
     google.charts.setOnLoadCallback(drawRegionsMap);
@@ -77,11 +94,13 @@ function callGoogle(){
 
 function drawRegionsMap() {
     let objData = [];
+    /* add data to chart using object*/
     for(let i = -1; i < covidObj.length; i++){
         if (i == -1){
            objData[i+1] = ['Country', 'Cases', 'Deaths'];
         }
         else{
+            /* exceptions for "USA" and "UK"*/
             switch(covidObj[i].country){
                 case('USA'):
                    objData[i+1] = ['United States', covidObj[i].cases, covidObj[i].deaths];
@@ -93,13 +112,14 @@ function drawRegionsMap() {
                     objData[i+1] = [covidObj[i].country, covidObj[i].cases, covidObj[i].deaths];    
             }
         }
- }
- var data = google.visualization.arrayToDataTable(objData);
+    }
+    var data = google.visualization.arrayToDataTable(objData);
+    /* color depending on data numbers*/
+    var options = {
+    colorAxis: {colors: ['#eee8f3', '#ddd1e7','#ccbadc','#bba3d0','#aa8cc5','#9975b9','#885ead', '#7647a2', '#663096', '#551a8b']},
+    };
 
-var options = {
-colorAxis: {colors: ['#eee8f3', '#ddd1e7','#ccbadc','#bba3d0','#aa8cc5','#9975b9','#885ead', '#7647a2', '#663096', '#551a8b']},
-};
-
-var chart = new google.visualization.GeoChart(document.getElementById('chartDiv'));
-chart.draw(data, options);
+    /* draw on asigned div map*/
+    var chart = new google.visualization.GeoChart(document.getElementById('chartDiv'));
+    chart.draw(data, options);
 }
