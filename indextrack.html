@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"  type='text/css'>    
+    <link rel="stylesheet" href="indextrack.css">
+
+</head>
+
+<body>
+    <nav class="bg-light">
+        <div id="logo"><img class="image" src="media/images/coronavirus.png"></div>
+        <a href="#" title="Graphs" class="active">
+            <span class="fa fa-chart-pie"></span>
+            <span class="label"> Graphs</span>
+        </a>
+        <a href="#" title="Data">
+            <span class="fa fa-bars"></span>
+            <span class="label"> Data</span>
+        </a>
+        <a href="#" title="byCountry">
+            <span class="fa fa-table-cells-large"></span>
+            <span class="label"> By Country</span>
+        </a>
+        <a href="#" title="Archive">
+            <span class="fa fa-folder"></span>
+            <span class="label"> Archive</span>
+        </a>
+        <a href="#" title="Compare">
+            <span class="fa fa-layer-group"></span>
+            <span class="label"> Compare</span>
+        </a>
+        <a href="#" title="Charts">
+            <span class="fa fa-arrow-trend-up"></span>
+            <span class="label"> Charts</span>
+        </a>
+        <a href="#" title="World">
+            <span class="fa fa-globe"></span>
+            <span class="label"> World</span>
+        </a>
+        <a href="#" title="Contact">
+            <span class="fa fa-message"></span>
+            <span class="label"> Contact</span>
+        </a>
+        <div class="sidebar-footer">
+            <a href="#" title="More">
+                <span class="fa fa-ellipsis"></span>
+                <span class="label"> More</span>
+            </a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="covid_tracker-md">
+
+            <h2>COVID-19 Tracker</h2>
+
+            <div class="container_total-md">
+                <p class="dato">Total case</p>
+                <p class="container+"></p>
+                <p class="numeros" id="totalCase"></p>
+            </div>
+
+            <div class="container_active-md">
+                <p class="dato" >Active case</p>
+                <p class="container+"></p>
+                <p class="numeros" id="totalActive"></p>
+            </div>
+
+            <div class="container_recovered-md">
+                <p class="dato">Recovered case</p>
+                <p class="container+"></p>
+                <p class="numeros" id="totalRecovered"></p>
+            </div>
+
+            <div class="container_deaths-md">
+                <p class="dato">Deaths case</p>
+                <p class="container+"></p>
+                <p class="numeros"id="totalDeaths"></p>
+            </div>
+
+            <div class="container_vaccines-md">
+                <p class="dato">Total vaccines</p>
+                <p class="container+"></p>
+                <p class="numeros" id="totalVaccines"></p>
+            </div>
+
+            <h3>Top 10 Country</h3>
+
+            <div class="topTen-md">
+                <div class="flag-md">
+                </div>
+                <p class="country">USA</p>
+                <p class="numbers"id="totalNumber">0293409380</p>
+            </div>
+
+        </section>
+    </main>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+    <script src="/indextrack.js"></script>
+
+</html>

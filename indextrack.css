@@ -1,0 +1,235 @@
+@font-face {
+    font-family: 'Themify';
+    src: url("media/fonts/themify.ttf");
+  }
+
+@font-face {
+    font-family: 'FontAwesome';
+    src: url("media/fonts/fontawesome-webfont.ttf");
+  }
+
+@font-face {
+    font-family: 'Lanenar Lane';
+    src: url("media/fonts/lanenar_Lane.ttf");
+  }
+
+@font-face {
+    font-family: 'Glyphicons Halflings Regular';
+    src: url("media/fonts/glyphicons-halflings-regular.ttf");
+  }
+
+  *,
+  *:before,
+  *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    background: #eee;
+  }
+
+  nav {
+    position: fixed;
+    height: 100vh;
+    width: 4rem;
+    overflow: hidden;
+    transition: width 0.3s ease;
+  }
+  nav:hover, nav.pinned {
+    width: 10rem;
+  }
+  nav #logo {
+    height: 6rem;
+    line-height: 6rem;
+    padding-left: 0.5rem;
+  }
+  nav a {
+    text-decoration: none!important;
+    vertical-align: middle;
+    display: table;
+    width: 10rem;
+  }
+  nav a.active .fa {
+    border-left: 3px solid #f60;
+  }
+  nav a:hover {
+    background: darkblue;
+    color: #BEE0FF;
+  }
+  nav a .fa {
+    width: 4rem;
+    display: table-cell;
+    font-size: 2rem;
+    padding: 1rem 0;
+    text-align: center;
+  }
+  nav a.label {
+    height: 50px;
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .sidebar-footer{
+      height: 50px;
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      list-style-type: none;
+      padding-bottom:4em;
+  }
+   main {
+    padding: 0rem 5rem 2rem 4rem;
+    min-height: 100vh; 
+  }
+  .image {
+      height: 50%;
+      -webkit-animation:spin 7s linear infinite;
+      -moz-animation:spin 7s linear infinite;
+      animation:spin 7s linear infinite;
+  }
+  @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+  @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+  @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg);
+
+     }
+ }
+
+.covid_tracker-md {
+    width: 330px;
+    height: 100vh;
+    background-color: #ffffff;
+    box-shadow: 0 0 100px 3px #1c1e8048;
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+    padding-top: 30px;    
+}
+
+h2 {
+    font-size: 25px;
+    color:rgb(0, 0, 0)
+
+}
+
+.container_total-md {
+    height: 50px;
+    width: 300px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(255, 242, 242);
+    padding-left: 20px;
+    padding-top: 13px;
+    margin: 5px 0 10px 0;
+    font-weight: bolder;
+    font-size: 13px;
+    color:rgb(20, 17, 88)
+
+}
+
+.container_active-md {
+    height: 50px;
+    width: 300px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(255, 249, 241);
+    padding-left: 20px;
+    padding-top: 13px;
+    margin: 5px 0 10px 0;
+    font-weight: bolder;
+    font-size: 13px;
+    color:rgb(20, 17, 88)
+}
+
+.container_recovered-md {
+    height: 50px;
+    width: 300px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(237, 255, 236);
+    padding-left: 20px;
+    padding-top: 13px;
+    margin: 5px 0 10px 0;
+    font-weight: bolder;
+    font-size: 13px;
+    color:rgb(20, 17, 88)
+}
+
+.container_deaths-md {
+    height: 50px;
+    width: 300px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(238, 251, 255);
+    padding-left: 20px;
+    padding-top: 13px;
+    margin: 5px 0 10px 0;
+    font-weight: bolder;
+    font-size: 13px;
+    color:rgb(20, 17, 88);
+}
+
+.container_vaccines-md {
+    height: 50px;
+    width: 300px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(255, 224, 231);
+    padding-left: 20px;
+    padding-top: 13px;
+    margin: 5px 0 10px 0;
+    font-weight: bolder;
+    font-size: 13px;
+    color:rgb(20, 17, 88);
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 20px;
+  color:rgb(20, 17, 88);
+  margin-top: 15px; 
+}
+
+.topTen-md {
+  height: 35px;
+  width: 300px;
+  border-radius: 5px;
+  box-shadow: 0.125px 0.125px 1px 1px #05051848;
+  display: flex;
+  flex-direction: row;
+
+}
+
+.flag-md {
+  height: 20px;
+  width: 40px;
+  margin-top: 7px;
+  margin-left: 10px;
+  background-color: cornflowerblue;
+  border-radius: 5px;
+}
+
+.country {
+  height: 20px;
+  width: 40px;
+  margin-top: 10px;
+  margin-left: 10px; 
+  border-radius: 5px;
+  font-size: 10px;
+}
+
+.numbers {
+  height: 20px;
+  width: 40px;
+  margin-top: 10px;
+  margin-left: 120px;
+  border-radius: 5px;
+  font-size: 10px;
+  font-weight: bolder;
+}
