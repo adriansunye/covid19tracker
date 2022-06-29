@@ -17,7 +17,8 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <!-- Place your stylesheet here-->
-    <link href="css/tracker.css" rel="stylesheet" type="text/css">
+    <link href="css/global.css" rel="stylesheet" type="text/css">
+    <link href="css/tracker1.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -64,7 +65,39 @@
       </nav>
     
     <main role="main" id="main" class="container-sd noShow">
-        
+        <section class="covid_tracker-md">
+
+            <h2>COVID-19 Tracker</h2>
+
+            <div class="info total row">
+                <div class="dato col-6">Total cases</div>
+                <div class="containerMas col"></div>
+                <div class="numeros col" id="totalCase"></div>
+            </div>
+
+            <div class="info activeCases row">
+                <div class="dato col-6">Active cases</div>
+                <div class="containerMas col"></div>
+                <div class="numeros col" id="totalActive"></div>
+            </div>
+
+            <div class="info recovered row">
+                <div class="dato col-6">Recovered cases</div>
+                <div class="containerMas col"></div>
+                <div class="numeros col" id="totalRecovered"></div>
+            </div>
+
+            <div class="info deaths row">
+                <div class="dato col-6">Deaths cases</div>
+                <div class="containerMas col"></div>
+                <div class="numeros col" id="totalDeaths"></div>
+            </div>
+
+            <h3>Top 10 Country</h3>
+            
+            <div id="topTen"></div>
+        </section>
+        <aside id="aside"></aside>
     </main><!-- /.container -->
 
 

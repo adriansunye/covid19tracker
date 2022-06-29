@@ -1,0 +1,25 @@
+.parent {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  overflow: auto;
+}@media (max-width: 768px) {
+  .parent {
+    grid-template-columns: auto;
+    grid-template-rows: repeat(28, 1fr); }
+}
+
+.parent .outside, .table {
+  font-weight: bolder!important;      
+  overflow: hidden;    
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);    
+}
+
+.table { grid-area: 2 / 3 / 9 / 8; }
+@media (max-width: 768px) {
+    .div1 { grid-area: 1 / 1 / 6 / 14; }
+}

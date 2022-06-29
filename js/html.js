@@ -1,7 +1,5 @@
 let firstTracker = '' + 
-'<div class="parent">' + 
-'            <div class="div1 text-center outside"> ' + 
-'            </div>' + 
+'<div class="parent">' +  
 '            <div class="div2 mt-5">' + 
 '                <div class="input-group w-50">' + 
 '                        <select class="custom-select" name="countriesList" id="countriesList">' + 

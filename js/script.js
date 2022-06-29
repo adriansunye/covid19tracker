@@ -19,10 +19,10 @@ let vaccinesObj = {};
 Select event and load data on refresh
 ========================================== 
 */
-drawTracker(firstTracker);
+drawTracker(firstTracker, 'css/tracker1.css');
 const countriesList = document.getElementById("countriesList");
 document.addEventListener( "DOMContentLoaded", getData);
-countriesList.addEventListener('change', populateCard);
+countriesList.addEventListener('change', populateTracker1);
 
 /* 
 ================================================ 
@@ -46,8 +46,9 @@ async function getData(){
             });
             worldObj = await covidWorld.json();
     /* first object created generate html to reduce load time*/
-    populateCard();
+    populateTracker1();
     populateGlobal();
+    populateAside();
     callGoogle();
     document.querySelector("main").removeAttribute("class", "noShow");
     document.querySelector("main").setAttribute("class", "show");
@@ -73,7 +74,7 @@ async function getData(){
 Get data from objects and add to html 
 ========================================== 
 */
-function populateCard(){
+function populateTracker1(){
     document.querySelector(".div3 .data").innerHTML = covidObj[countriesList.selectedIndex].cases;
     document.querySelector(".div4 .data").innerHTML = covidObj[countriesList.selectedIndex].deaths;
     document.querySelector(".div6 .data").innerHTML = covidObj[countriesList.selectedIndex].recovered;
@@ -92,6 +93,44 @@ function populateGlobal(){
     document.querySelector(".globalItem2 .data").innerHTML = worldObj.recovered;
     document.querySelector(".globalItem3 .data").innerHTML = worldObj.deaths;
     document.querySelector(".globalItem4 .data").innerHTML = worldObj.todayDeaths;
+}
+
+/* 
+========================================== 
+Get world data and add to common aside
+========================================== 
+*/
+function populateAside(){
+    document.querySelector(".total .numeros").innerHTML = worldObj.cases;
+    document.querySelector(".total .containerMas").innerHTML = worldObj.todayCases;
+    document.querySelector(".activeCases .numeros").innerHTML = worldObj.active ;
+    document.querySelector(".recovered .numeros").innerHTML = worldObj.recovered;
+    document.querySelector(".recovered .containerMas").innerHTML = worldObj.todayRecovered ;
+    document.querySelector(".deaths .numeros").innerHTML = worldObj.deaths;
+    document.querySelector(".deaths .containerMas").innerHTML = worldObj.todayDeaths;
+    let covidObjOrder = covidObj.sort(function(a, b) {
+        return b.cases - a.cases;
+    });
+    for(let i = 0; i < 10; i++){
+        let div = document.createElement("div");
+        let divFlag = document.createElement("div"); 
+        let flag = document.createElement("img");
+        let country = document.createElement("p");
+        let data = document.createElement("p");
+        document.getElementById("topTen").appendChild(div);
+        div.setAttribute('class', 'topTenCountry');
+        div.setAttribute('id', covidObjOrder[i].countryInfo.iso3);
+        document.getElementById(covidObjOrder[i].countryInfo.iso3).appendChild(divFlag);
+        divFlag.setAttribute('class', 'flag');
+        document.querySelector('#' + covidObjOrder[i].countryInfo.iso3 + ' .flag').appendChild(flag);
+        flag.setAttribute('src', covidObjOrder[i].countryInfo.flag);
+        document.getElementById(covidObjOrder[i].countryInfo.iso3).appendChild(country);
+        country.setAttribute('class', 'country');
+        document.querySelector('#' + covidObjOrder[i].countryInfo.iso3 + ' .country').innerHTML = covidObjOrder[i].country;
+        document.getElementById(covidObjOrder[i].countryInfo.iso3).appendChild(data);
+        data.setAttribute('class', 'numbers');
+        document.querySelector('#' + covidObjOrder[i].countryInfo.iso3 + ' .numbers').innerHTML = covidObjOrder[i].cases;
+    }
 }
 
 /* 
@@ -137,6 +176,8 @@ function drawRegionsMap() {
     google.visualization.events.addListener(geochart, 'select', selectHandler);
 }
 
-function drawTracker(code){
-   document.getElementById("main").innerHTML = code;
+function drawTracker(code, css){
+   document.querySelector("head").lastElementChild.setAttribute('href', css);
+   document.getElementById("aside").innerHTML = code;
+       
 }
