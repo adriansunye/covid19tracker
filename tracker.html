@@ -18,41 +18,41 @@
 
     <!-- Place your stylesheet here-->
     <link href="css/global.css" rel="stylesheet" type="text/css">
-    <link href="css/tracker1.css" rel="stylesheet" type="text/css">
+    <link id="myCss" href="css/tracker1.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
     <nav class="bg-light">
         <div id="logo"><img class="image" src="media/images/coronavirus.png"></div>
-        <a href="#" title="Graphs" class="active">
+        <a href="#" id="nav1" title="Graphs" onclick="goTracker1(firstTracker, 'css/tracker1.css');" class="active">
           <span class="fa fa-chart-pie"></span>
           <span class="label"> Graphs</span>
         </a>
-        <a href="#" title="Data">
+        <a href="#" id="nav2" onclick="goTracker2(secondTracker, 'css/tracker2.css');" title="Data">
           <span class="fa fa-bars"></span>
           <span class="label"> Data</span>
         </a>
-        <a href="#" title="byCountry"> 
+        <a href="#" id="nav3" title="byCountry"> 
           <span class="fa fa-table-cells-large"></span>
           <span class="label"> By Country</span>
         </a>
-        <a href="#" title="Archive">
+        <a href="#" id="nav4" title="Archive">
           <span class="fa fa-folder"></span>
           <span class="label"> Archive</span>
         </a>
-        <a href="#" title="Compare">
+        <a href="#" id="nav5" title="Compare">
           <span class="fa fa-layer-group"></span>
           <span class="label"> Compare</span>
         </a>
-        <a href="#" title="Charts">
+        <a href="#" id="nav6" title="Charts">
           <span class="fa fa-arrow-trend-up"></span>
           <span class="label"> Charts</span>
         </a>
-        <a href="#" title="World">
+        <a href="#" id="nav7" title="World">
           <span class="fa fa-globe"></span>
           <span class="label"> World</span>
         </a>
-        <a href="#" title="Contact">
+        <a href="#" id="nav8" title="Contact">
           <span class="fa fa-message"></span>
           <span class="label"> Contact</span>
         </a>
@@ -97,7 +97,9 @@
             
             <div id="topTen"></div>
         </section>
-        <aside id="aside"></aside>
+        <aside id="aside">
+            
+        </aside>
     </main><!-- /.container -->
 
 

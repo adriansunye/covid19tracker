@@ -43,6 +43,7 @@ body {
   margin: 0;
   padding: 0;
   background: #eee;
+    overflow-x: hidden;
 }
 
 nav {
@@ -125,7 +126,7 @@ Cards opacity animation
 ========================================== 
 */
 .noShow{
-    opacity: 0;
+   opacity: 0; 
 }
 
 .show{ 

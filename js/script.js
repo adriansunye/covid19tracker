@@ -48,7 +48,7 @@ async function getData(){
     /* first object created generate html to reduce load time*/
     populateTracker1();
     populateGlobal();
-    populateAside();
+    populateSection();
     callGoogle();
     document.querySelector("main").removeAttribute("class", "noShow");
     document.querySelector("main").setAttribute("class", "show");
@@ -100,7 +100,7 @@ function populateGlobal(){
 Get world data and add to common aside
 ========================================== 
 */
-function populateAside(){
+function populateSection(){
     document.querySelector(".total .numeros").innerHTML = worldObj.cases;
     document.querySelector(".total .containerMas").innerHTML = worldObj.todayCases;
     document.querySelector(".activeCases .numeros").innerHTML = worldObj.active ;
@@ -177,7 +177,46 @@ function drawRegionsMap() {
 }
 
 function drawTracker(code, css){
-   document.querySelector("head").lastElementChild.setAttribute('href', css);
-   document.getElementById("aside").innerHTML = code;
-       
+   document.getElementById("myCss").setAttribute('href', css);
+   document.getElementById("aside").innerHTML = code;      
+}
+
+function goTracker1(code, css){
+   document.querySelector(".active").removeAttribute("class", "active");
+   document.getElementById("nav1").setAttribute("class", "active");
+   document.getElementById("aside").innerHTML = "";
+   drawTracker(code, css)
+   populateTracker1();
+   populateGlobal();    
+}
+
+function goTracker2(code, css){
+   document.querySelector(".active").removeAttribute("class", "active");
+   document.getElementById("nav2").setAttribute("class", "active"); 
+   document.getElementById("aside").innerHTML = "";
+      
+   drawTracker(code, css);
+   populateTracker2();    
+}
+
+function populateTracker2(){
+    var t = "";
+    for(let i = 0; i < covidObj.length; i++){
+        var tr = "<tr>";
+          tr += "<td>"+covidObj[i].country+"</td>";
+          tr += "<td>"+covidObj[i].country+"</td>";
+          tr += "<td>"+covidObj[i].cases+"</td>";
+          tr += "<td>"+covidObj[i].todayCases+"</td>";
+          tr += "<td>"+covidObj[i].deaths+"</td>";
+          tr += "<td>"+covidObj[i].todayDeaths+"</td>";
+          tr += "<td>"+covidObj[i].recovered+"</td>";
+          tr += "<td>"+covidObj[i].active+"</td>";
+          tr += "<td>"+covidObj[i].critical+"</td>";
+          tr += "<td>"+covidObj[i].tests +"</td>";
+          tr += "</tr>";
+          t += tr;
+        
+    }
+    document.getElementById("tableBody").innerHTML += t;
+    
 }

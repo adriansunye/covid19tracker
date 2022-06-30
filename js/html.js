@@ -250,3 +250,48 @@ let firstTracker = '' +
 '            </div>' + 
 '        </div>' + 
 '';
+
+let secondTracker = '' + 
+'<div class="container">  ' + 
+'                <div class="tableContainer">' + 
+'                    <div class=\'titleTable mt-3\'>Ajax Data Table - Covid-19 Country Wise State</div>' + 
+'                        <div class="input-group w-25  mt-3 ml-3"> ' + 
+'                            <select class="custom-select" name="entries" id="entries">' + 
+'                                <option value="10">10</option>' + 
+'                                <option value="20">20</option>' + 
+'                                <option value="30">30</option>' + 
+'                                <option value="40">40</option>' + 
+'                                <option value="50">50</option>' + 
+'                            </select>' + 
+'                        </div>' + 
+'                        <table id="dtBasicExample" class="table table-striped table-bordered table-sm ml-4 mt-3" cellspacing="0" width="100%">' + 
+'                          <thead>' + 
+'                            <tr>' + 
+'                              <th class="th-sm">Flag' + 
+'                              </th>' + 
+'                              <th class="th-sm">Country' + 
+'                              </th>' + 
+'                              <th class="th-sm">Cases' + 
+'                              </th>' + 
+'                              <th class="th-sm">New Cases' + 
+'                              </th>' + 
+'                              <th class="th-sm">Deaths' + 
+'                              </th>' + 
+'                              <th class="th-sm">New Deaths' + 
+'                              </th>' + 
+'                              <th class="th-sm">Recovered' + 
+'                              </th>' + 
+'                              <th class="th-sm">Active' + 
+'                              </th>' + 
+'                              <th class="th-sm">Critical' + 
+'                              </th>' + 
+'                              <th class="th-sm">Tested' + 
+'                              </th>' + 
+'                            </tr>' + 
+'                          </thead>' + 
+'                          <tbody id="tableBody">' +
+'                          </tbody>' +
+'                        </table>' + 
+'                </div>' + 
+'            </div>' + 
+'';
