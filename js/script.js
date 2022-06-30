@@ -182,28 +182,27 @@ function drawTracker(code, css){
 }
 
 function goTracker1(code, css){
-   document.querySelector(".active").removeAttribute("class", "active");
-   document.getElementById("nav1").setAttribute("class", "active");
-   document.getElementById("aside").innerHTML = "";
+   activeNav("nav1");
    drawTracker(code, css)
    populateTracker1();
    populateGlobal();    
 }
 
 function goTracker2(code, css){
-   document.querySelector(".active").removeAttribute("class", "active");
-   document.getElementById("nav2").setAttribute("class", "active"); 
-   document.getElementById("aside").innerHTML = "";
-      
+   activeNav("nav2");  
    drawTracker(code, css);
+   document.getElementById("entries").addEventListener('change', populateTracker2);
    populateTracker2();    
 }
 
 function populateTracker2(){
+    document.getElementById("tableBody").innerHTML = "";
+    const elm = document.getElementById("entries");
+    const indexValue = elm.options[elm.selectedIndex].value;
     var t = "";
-    for(let i = 0; i < covidObj.length; i++){
+    for(let i = 0; i < indexValue; i++){
         var tr = "<tr>";
-          tr += "<td>"+covidObj[i].country+"</td>";
+          tr += "<td><div class='flag'><img src='"+covidObj[i].countryInfo.flag+"'></div></td>";
           tr += "<td>"+covidObj[i].country+"</td>";
           tr += "<td>"+covidObj[i].cases+"</td>";
           tr += "<td>"+covidObj[i].todayCases+"</td>";
@@ -217,6 +216,11 @@ function populateTracker2(){
           t += tr;
         
     }
-    document.getElementById("tableBody").innerHTML += t;
-    
+    document.getElementById("tableBody").innerHTML += t;   
+}
+
+function activeNav(nav){
+   document.querySelector(".active").removeAttribute("class", "active");
+   document.getElementById(nav).setAttribute("class", "active"); 
+   document.getElementById("aside").innerHTML = "";
 }

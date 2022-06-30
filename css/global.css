@@ -165,16 +165,18 @@ Cards opacity animation
     width: 490px;
     height: 100vh;
     background-color: #ffffff;
-    box-shadow: 0 0 100px 3px #1c1e8048;
+    box-shadow: 0 0 70px 3px #1c1e8048;
     display: flex;
     flex-direction: column;
     padding-left: 6%;
     padding-top: 30px; 
     position: absolute;
     overflow-x: hidden;
+    overflow-y: hidden;
 }@media (max-width: 768px) {
   .covid_tracker-md {
-    padding-left: 20%; }
+    padding-left: 20%; 
+    height: 735px;}
 }
 
 h2 {

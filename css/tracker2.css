@@ -16,11 +16,13 @@
     
 }
 @media (max-width: 768px) {
-    .tableContainer {  
+    .tableContainer { 
         height: 708px;
         width: 490px;
-        left:0px; 
+        left:50px;
+        padding-right: 70px;
         top:750px;
+        overflow-x: scroll;
     }
 }
 
