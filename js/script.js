@@ -14,6 +14,11 @@ let historyObj = {};
 let worldObj = {};
 let vaccinesObj = {};
 
+let chart = "";
+let data = "";
+let options = {
+    colorAxis: {colors: ['#eee8f3', '#ddd1e7','#ccbadc','#bba3d0','#aa8cc5','#9975b9','#885ead', '#7647a2', '#663096', '#551a8b']},
+};
 /* 
 ========================================== 
 Select event and load data on refresh
@@ -108,7 +113,8 @@ function populateSection(){
     document.querySelector(".recovered .containerMas").innerHTML = worldObj.todayRecovered ;
     document.querySelector(".deaths .numeros").innerHTML = worldObj.deaths;
     document.querySelector(".deaths .containerMas").innerHTML = worldObj.todayDeaths;
-    let covidObjOrder = covidObj.sort(function(a, b) {
+    let covidObjOrder = covidObj.slice();
+    covidObjOrder.sort(function(a, b) {
         return b.cases - a.cases;
     });
     for(let i = 0; i < 10; i++){
@@ -164,16 +170,14 @@ function drawRegionsMap() {
             }
         }
     }
-    var data = google.visualization.arrayToDataTable(objData);
+    data = google.visualization.arrayToDataTable(objData);
     /* color depending on data numbers*/
-    var options = {
-    colorAxis: {colors: ['#eee8f3', '#ddd1e7','#ccbadc','#bba3d0','#aa8cc5','#9975b9','#885ead', '#7647a2', '#663096', '#551a8b']},
-    };
+    
 
     /* draw on asigned div map*/
-    var chart = new google.visualization.GeoChart(document.getElementById('chartDiv'));
+    chart = new google.visualization.GeoChart(document.getElementById('chartDiv'));
     chart.draw(data, options);
-    google.visualization.events.addListener(geochart, 'select', selectHandler);
+    /*google.visualization.events.addListener(geochart, 'select', selectHandler);*/
 }
 
 function drawTracker(code, css){

@@ -185,6 +185,7 @@ h2 {
 
 }
 .info{
+    transition: 250ms all;
     height: 50px;
     width: 370px;
     border-radius: 5px;
@@ -195,6 +196,10 @@ h2 {
     margin: 5px 0 10px 0;
     font-weight: bolder;
     font-size: 13px;
+}
+
+.info:hover {
+    transform: scale(1.2);
 }
 
 .total {
