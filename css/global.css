@@ -125,6 +125,7 @@ Animation logo navbar
 Cards opacity animation 
 ========================================== 
 */
+
 .noShow{
    opacity: 0; 
 }
@@ -160,6 +161,12 @@ Cards opacity animation
     from { opacity: 0; }
     to   { opacity: 1; }
 }
+
+/* 
+========================================== 
+Common section 
+========================================== 
+*/
 
 .covid_tracker-md {
     width: 490px;

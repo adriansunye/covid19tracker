@@ -262,7 +262,8 @@ let secondTracker = '' +
 '                                <option value="30">30</option>' + 
 '                                <option value="40">40</option>' + 
 '                                <option value="50">50</option>' + 
-'                            </select>' + 
+'                                <option value="227">All</option>' +    
+'                            </select>' +                                 
 '                        </div>' + 
 '                        <table id="dtOrderExample" class="table table-striped table-bordered table-sm ml-4 mt-3" cellspacing="0" width="100%">' + 
 '                          <thead>' + 

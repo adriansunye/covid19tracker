@@ -16,9 +16,7 @@ let vaccinesObj = {};
 
 let chart = "";
 let data = "";
-let options = {
-    colorAxis: {colors: ['#eee8f3', '#ddd1e7','#ccbadc','#bba3d0','#aa8cc5','#9975b9','#885ead', '#7647a2', '#663096', '#551a8b']},
-};
+
 /* 
 ========================================== 
 Select event and load data on refresh
@@ -141,9 +139,40 @@ function populateSection(){
 
 /* 
 ========================================== 
+Function that gives data to table
+========================================== 
+*/
+
+function populateTracker2(){
+    document.getElementById("tableBody").innerHTML = "";
+    const elm = document.getElementById("entries");
+    const indexValue = elm.options[elm.selectedIndex].value;
+    var t = "";
+    for(let i = 0; i < indexValue; i++){
+        var tr = "<tr>";
+          tr += "<td><div class='flag'><img src='"+covidObj[i].countryInfo.flag+"'></div></td>";
+          tr += "<td>"+covidObj[i].country+"</td>";
+          tr += "<td>"+covidObj[i].cases+"</td>";
+          tr += "<td>"+covidObj[i].todayCases+"</td>";
+          tr += "<td>"+covidObj[i].deaths+"</td>";
+          tr += "<td>"+covidObj[i].todayDeaths+"</td>";
+          tr += "<td>"+covidObj[i].recovered+"</td>";
+          tr += "<td>"+covidObj[i].active+"</td>";
+          tr += "<td>"+covidObj[i].critical+"</td>";
+          tr += "<td>"+covidObj[i].tests +"</td>";
+          tr += "</tr>";
+          t += tr;
+        
+    }
+    document.getElementById("tableBody").innerHTML += t;          
+}
+
+/* 
+========================================== 
 Use google charts to generate map
 ========================================== 
 */
+
 function callGoogle(){
     google.charts.load('current', {'packages':['geochart', 'corechart']});
     google.charts.setOnLoadCallback(drawRegionsMap);
@@ -172,7 +201,9 @@ function drawRegionsMap() {
     }
     data = google.visualization.arrayToDataTable(objData);
     /* color depending on data numbers*/
-    
+    let options = {
+    colorAxis: {colors: ['#eee8f3', '#ddd1e7','#ccbadc','#bba3d0','#aa8cc5','#9975b9','#885ead', '#7647a2', '#663096', '#551a8b']},
+    };
 
     /* draw on asigned div map*/
     chart = new google.visualization.GeoChart(document.getElementById('chartDiv'));
@@ -180,10 +211,22 @@ function drawRegionsMap() {
     /*google.visualization.events.addListener(geochart, 'select', selectHandler);*/
 }
 
+/* 
+========================================== 
+Function that changes css and aside cotent
+========================================== 
+*/
+
 function drawTracker(code, css){
    document.getElementById("myCss").setAttribute('href', css);
    document.getElementById("aside").innerHTML = code;      
 }
+
+/* 
+========================================== 
+Functions called by nav
+========================================== 
+*/
 
 function goTracker1(code, css){
    activeNav("nav1");
@@ -196,31 +239,8 @@ function goTracker2(code, css){
    activeNav("nav2");  
    drawTracker(code, css);
    document.getElementById("entries").addEventListener('change', populateTracker2);
-   populateTracker2();    
-}
-
-function populateTracker2(){
-    document.getElementById("tableBody").innerHTML = "";
-    const elm = document.getElementById("entries");
-    const indexValue = elm.options[elm.selectedIndex].value;
-    var t = "";
-    for(let i = 0; i < indexValue; i++){
-        var tr = "<tr>";
-          tr += "<td><div class='flag'><img src='"+covidObj[i].countryInfo.flag+"'></div></td>";
-          tr += "<td>"+covidObj[i].country+"</td>";
-          tr += "<td>"+covidObj[i].cases+"</td>";
-          tr += "<td>"+covidObj[i].todayCases+"</td>";
-          tr += "<td>"+covidObj[i].deaths+"</td>";
-          tr += "<td>"+covidObj[i].todayDeaths+"</td>";
-          tr += "<td>"+covidObj[i].recovered+"</td>";
-          tr += "<td>"+covidObj[i].active+"</td>";
-          tr += "<td>"+covidObj[i].critical+"</td>";
-          tr += "<td>"+covidObj[i].tests +"</td>";
-          tr += "</tr>";
-          t += tr;
-        
-    }
-    document.getElementById("tableBody").innerHTML += t;   
+   populateTracker2(); 
+   document.getElementById("site-search").addEventListener('change', search); 
 }
 
 function activeNav(nav){
