@@ -8,6 +8,7 @@ El encargo a desarrollar es el Impacto Covid-19 en el mundo, en el cual se dise�
 Se escoge el Mockup Home-1 para desarrollar como página principal. Esta es una página con scroll-down, en el cual la información aparece a medida que se baja en la lectura. Consta de una navbar superior con logotipo y las diferentes secciones de acceso (home, prevention, qurantine, pages, about y help) y un botón de Tracker, el que permite redirigir al usaurio al dashboard informativo de los datos COVID actuales.
 <br>
 <br>
+!(https://github.com/adriansunye/covid19tracker/blob/master/img%20readme/Imagen%201.png)
 Imagen 1: Página Home-1, navbar.
 <br>
 <br>
